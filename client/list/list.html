@@ -1,0 +1,79 @@
+<Template name="BEListIcon">
+  <a id="{{id}}" class="icon btn btn-xs {{class}} class-{{icon}}" href="{{href}}"><i class="fa fa-lg fa-{{icon}}"></i></a>
+</Template>
+
+<Template name="BEListContent">
+  <a href="{{href}}" class="be-list-content">
+    {{#if title}}
+    <div class="be-title {{titleClass}}">{{title}}</div>
+    {{/if}}
+    {{#if description}}
+    <div class="be-description {{descriptionClass}}">{{description}}</div>
+    {{/if}}
+  </a>
+</Template>
+
+<Template name="BEListIcons">
+  <div class="be-list-icons">
+    {{#each this}}
+      {{> BEListIcon this}}
+    {{/each}}
+  </div>
+</Template>
+
+<Template name="BEListCell">
+  <td id="{{id}}" class="{{class}}">
+    {{#if icons}}
+      {{> BEListIcons icons}}
+    {{/if}}
+    {{#if hasContent}}
+      {{> BEListContent this}}
+    {{/if}}
+  </td>
+</Template>
+
+<Template name="BEListOneItem">
+  <tr id="{{id}}" class="{{class}}">
+    {{#each cells}}
+      {{> BEListCell this}}
+    {{/each}}
+  </tr>
+</Template>
+
+<Template name="BEOnePageItem">
+  <li class="{{class}}">
+    <a href="{{href}}" class="{{aclass}}" aria-label="{{aria_label}}">{{page}}
+      {{#if aria_hidden}}
+        <span aria-hidden="true">{{aria_hidden}}</span>
+      {{/if}}
+    </a>
+  </li>
+</Template>
+
+<Template name="BEPagination">
+  <nav class="be-nav-pagination">
+    <ul class="pagination">
+      {{#each pages}}
+        {{> BEOnePageItem this}}
+      {{/each}}
+    </ul>
+  </nav>
+</Template>
+
+<Template name="BEList">
+  {{#if hasItems}}
+  <div id= "{{id}}" class="list panel panel-default be-list">
+    <table class="table table-hover">
+      <tbody>
+        {{#each items}}
+          {{> BEListOneItem this}}
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  {{#if pagination}}
+    {{> BEPagination pagination}}
+  {{/if}}
+  {{/if}}
+</Template>
+

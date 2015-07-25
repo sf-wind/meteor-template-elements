@@ -1,0 +1,23 @@
+<template name="BEFooterItem">
+  <a class="col-xs-{{grid}} be-footer-item {{class}} {{active}}" href="{{href}}">
+    {{#if icon}} 
+    <i class="be-footer-icon fa fa-{{icon}}"></i>
+    {{/if}}
+    {{#if label}}
+    <div class="be-footer-label">{{label}}</div>
+    {{/if}}
+  </a>
+</template>
+
+
+<Template name="BEFooter">
+  {{#if hasFooter}}
+  <nav id="be-footer" class="navbar navbar-default navbar-fixed-bottom container-fluid" role="navigation">
+    <div class="row">
+        {{#each this}}
+        {{> BEFooterItem this}}
+        {{/each}}
+    </div>
+  </nav>
+  {{/if}}
+</Template>

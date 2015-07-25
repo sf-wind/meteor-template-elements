@@ -1,0 +1,81 @@
+<template name="BEHeader">
+  {{#if hasHeader}}
+  <nav class="navbar navbar-default navbar-fixed-top clearfix" role="navigation">
+    {{> BEHeaderInternal this}}
+  </nav>
+  {{/if}}
+</template>
+
+<template name="BEHeaderOption">
+  {{#if items}}
+  <li class="be-one-header-option dropdown">
+    {{#if icon}}
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      <i class="fa fa-{{icon}}"></i>
+    </a>
+    {{else}}
+    {{#if name}}
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      {{name}} <span class="caret"></span>
+    </a>
+    {{/if}}
+    {{/if}}
+    <ul id="{{id}}" class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="header-options">
+      {{#each items}}
+      <li role="presentation">
+        <a role="menuitem" id="{{id}}" href="{{href}}" class="dropdown-menu-item">
+          {{#if icon}}
+          <i class="fa fa-{{icon}}"></i>
+          {{/if}}
+          {{name}}
+        </a>
+      </li>
+      {{/each}}
+    </ul>
+  </li>
+  {{else}}
+  <li class="be-one-header-option">
+    {{#if name}}
+    <a class="be-header-link {{class}}" href="{{href}}">{{name}}</a>
+    {{else}}
+    {{#if icon}}
+    <a class="be-header-link class-{{icon}} {{class}}" href="{{href}}"><i class="fa fa-{{icon}}"></i></a>
+    {{/if}}
+    {{/if}}
+  </li>
+  {{/if}}
+</template>
+
+<template name="BEHeaderInternal">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      {{#if options}}
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapsable">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      {{/if}}
+      <div class="navbar-brand">
+        {{#if noBack}}
+          <a class="be-title-back"> <i class="fa fa-invisible"></i></a>
+        {{else}}
+          <a id="be-back" class="be-title-back"><i class="fa fa-chevron-left"></i></a>
+        {{/if}}
+        {{title}}
+      </div>
+    </div>
+    {{#if options}}
+    <div class="collapse navbar-collapse" id="navbar-collapsable">
+      <ul class="nav navbar-nav navbar-right be-header-options">
+        {{#each options}}
+        {{> BEHeaderOption this}}
+        {{/each}}
+      </ul>
+    </div>
+    {{/if}}
+  </div>
+</template>
+
