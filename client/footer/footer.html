@@ -1,21 +1,21 @@
-<template name="BEFooterItem">
-  <a class="col-xs-{{grid}} be-footer-item {{class}} {{active}}" href="{{href}}">
-    {{#if icon}} 
-    <i class="be-footer-icon fa fa-{{icon}}"></i>
+<template name="TEFooterItem">
+  <a class="col-xs-{{grid}} te-footer-item {{class}} {{active}}" href="{{href}}">
+    {{#if icon}}
+    <i class="te-footer-icon fa fa-{{icon}}"></i>
     {{/if}}
     {{#if label}}
-    <div class="be-footer-label">{{label}}</div>
+    <div class="te-footer-label">{{label}}</div>
     {{/if}}
   </a>
 </template>
 
 
-<Template name="BEFooter">
+<Template name="TEFooter">
   {{#if hasFooter}}
-  <nav id="be-footer" class="navbar navbar-default navbar-fixed-bottom container-fluid" role="navigation">
+  <nav id="te-footer" class="navbar navbar-default navbar-fixed-bottom container-fluid" role="navigation">
     <div class="row">
-        {{#each this}}
-        {{> BEFooterItem this}}
+        {{#each items}}
+        {{> TEFooterItem this}}
         {{/each}}
     </div>
   </nav>

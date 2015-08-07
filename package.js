@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'fsun:bootstrap-elements',
+  name: 'fsun:template-elements',
   version: '0.0.1',
   // Brief, one-line summary of the package.
   summary: '',
@@ -10,9 +10,24 @@ Package.describe({
   documentation: 'README.md'
 });
 
+var pluginOptions = {
+  name : 'be-configurator',
+  use : [
+    'underscore',
+  ],
+  sources : [
+    'module-definitions.js',
+    'distributed-configuration.js',
+    'te-configurator.js'
+  ],
+  npmDependencies : {}
+};
+
+Package.registerBuildPlugin(pluginOptions);
+
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
-  api.use(['coffeescript', 'tinytest']);
+  api.use('coffeescript');
   api.use("templating", "client");
   api.use("blaze", "client");
   api.use("jquery", "client");
@@ -34,3 +49,18 @@ Package.onUse(function(api) {
   api.export("BElements");
 });
 
+Package.onTest(function(api) {
+  api.use(["mike:mocha-package", "practicalmeteor:chai"]);
+  api.use('coffeescript');
+  api.use("templating", "client");
+  api.use("blaze", "client");
+  api.use("jquery", "client");
+  api.use("fsun:template-elements")
+
+  api.addFiles('tests/_.coffee', 'client');
+  api.addFiles('tests/client/list/list.coffee', 'client');
+  api.addFiles('tests/client/header/header.coffee', 'client');
+  api.addFiles('tests/client/footer/footer.coffee', 'client');  
+  // should be the last file to add
+  api.addFiles('tests/tests.coffee', 'client');
+});

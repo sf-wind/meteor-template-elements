@@ -1,48 +1,53 @@
-<Template name="BEListIcon">
-  <a id="{{id}}" class="icon btn btn-xs {{class}} class-{{icon}}" href="{{href}}"><i class="fa fa-lg fa-{{icon}}"></i></a>
+<Template name="TEListIcon">
+  <a id="{{id}}" class="icon btn btn-xs {{class}} class-{{icon}}" href="{{href}}">
+    <i class="fa fa-lg fa-{{icon}}"></i>
+  </a>
 </Template>
 
-<Template name="BEListContent">
-  <a href="{{href}}" class="be-list-content">
+<Template name="TEListContent">
+  <a href="{{href}}" class="te-content">
     {{#if title}}
-    <div class="be-title {{titleClass}}">{{title}}</div>
+    <div class="te-title {{title.class}}">{{title.name}}</div>
     {{/if}}
     {{#if description}}
-    <div class="be-description {{descriptionClass}}">{{description}}</div>
+    <div class="te-description {{description.class}}">
+      {{description.name}}
+    </div>
     {{/if}}
   </a>
 </Template>
 
-<Template name="BEListIcons">
-  <div class="be-list-icons">
+<Template name="TEListIcons">
+  <div class="te-list-icons">
     {{#each this}}
-      {{> BEListIcon this}}
+      {{> TEListIcon this}}
     {{/each}}
   </div>
 </Template>
 
-<Template name="BEListCell">
-  <td id="{{id}}" class="{{class}}">
+<Template name="TEListCell">
+  <td id="{{id}}" class="te-table-cell {{class}}" colspan="{{colspan}}">
     {{#if icons}}
-      {{> BEListIcons icons}}
+      {{> TEListIcons icons}}
     {{/if}}
     {{#if hasContent}}
-      {{> BEListContent this}}
+      {{> TEListContent this}}
     {{/if}}
   </td>
 </Template>
 
-<Template name="BEListOneItem">
-  <tr id="{{id}}" class="{{class}}">
+<Template name="TEListOneItem">
+  <tr id="{{id}}" class="te-table-row {{class}}" item="{{item}}">
     {{#each cells}}
-      {{> BEListCell this}}
+      {{> TEListCell this}}
     {{/each}}
   </tr>
 </Template>
 
-<Template name="BEOnePageItem">
-  <li class="{{class}}">
-    <a href="{{href}}" class="{{aclass}}" aria-label="{{aria_label}}">{{page}}
+<Template name="TEOnePageItem">
+  <li class="te-one-page {{class}}">
+    <a href="{{href}}" class="{{aclass}}" aria-label="{{aria_label}}" index="{{index}}">
+      {{page}}
       {{#if aria_hidden}}
         <span aria-hidden="true">{{aria_hidden}}</span>
       {{/if}}
@@ -50,30 +55,29 @@
   </li>
 </Template>
 
-<Template name="BEPagination">
-  <nav class="be-nav-pagination">
+<Template name="TEPagination">
+  <nav class="te-nav-pagination">
     <ul class="pagination">
       {{#each pages}}
-        {{> BEOnePageItem this}}
+        {{> TEOnePageItem this}}
       {{/each}}
     </ul>
   </nav>
 </Template>
 
-<Template name="BEList">
+<Template name="TEList">
   {{#if hasItems}}
-  <div id= "{{id}}" class="list panel panel-default be-list">
-    <table class="table table-hover">
+  <div id= "{{id}}" class="panel panel-default te-list">
+    <table class="table table-hover te-table">
       <tbody>
         {{#each items}}
-          {{> BEListOneItem this}}
+          {{> TEListOneItem this}}
         {{/each}}
       </tbody>
     </table>
   </div>
   {{#if pagination}}
-    {{> BEPagination pagination}}
+    {{> TEPagination pagination}}
   {{/if}}
   {{/if}}
 </Template>
-

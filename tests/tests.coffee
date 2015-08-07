@@ -1,0 +1,17 @@
+
+for i in [0...tests.length]
+  oneGroupTests = tests[i]
+  describe  oneGroupTests.name, ->
+    for i in [0...oneGroupTests.tests.length]
+      test = oneGroupTests.tests[i]
+      do (test) ->
+        it test.name, ->
+          chai.assert(test.template)
+          chai.assert(test.test)
+          div = document.createElement("div")
+          Blaze.renderWithData(Template[test.template], test.data, div)
+#          console.log div
+          if test.before
+            test.before($(div))
+          test.test($(div))
+          $(div).remove()
