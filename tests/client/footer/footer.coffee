@@ -20,17 +20,17 @@ footerTests =
       data : undefined
       template : "TEFooter"
       test : (div) ->
-        chai.expect(div.find('#te-footer').length).to.equal(0)
+        expect(div.find('#te-footer').length).toEqual(0)
     }
     {
       name : "Footer, helper, items"
       data : data.footerComplete
       template : "TEFooter"
       test : (div) ->
-        chai.expect(div.find('.item-1').hasClass('active')).to.be.true
-        chai.expect(div.find('.item-1').attr('href')).to.equal('/item/1')
-        chai.expect(div.find('.item-1').find('.fa-icon-1').length).to.equal(1)
-        chai.expect(div.find('.item-1').find('.te-footer-label').length).to.equal(1)
+        expect(div.find('.item-1').hasClass('active')).toBe(true)
+        expect(div.find('.item-1').attr('href')).toEqual('/item/1')
+        expect(div.find('.item-1').find('.fa-icon-1').length).toEqual(1)
+        expect(div.find('.item-1').find('.te-footer-label').length).toEqual(1)
     }
     {
       name : "Footer, event, click"
@@ -39,7 +39,7 @@ footerTests =
       before : (div) ->
         div.find('.item-1').trigger('click')
       test : (div) ->
-        chai.expect(Session.get('footerTest')).to.equal('footerItem')
+        expect(Session.get('footerTest')).toEqual('footerItem')
         Session.set('footerTest', undefined)
     }
   ]

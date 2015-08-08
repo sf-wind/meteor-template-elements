@@ -6,8 +6,8 @@ for i in [0...tests.length]
       test = oneGroupTests.tests[i]
       do (test) ->
         it test.name, ->
-          chai.assert(test.template)
-          chai.assert(test.test)
+          expect(test.template).toBeDefined()
+          expect(test.test).toBeDefined()
           div = document.createElement("div")
           Blaze.renderWithData(Template[test.template], test.data, div)
 #          console.log div

@@ -99,61 +99,61 @@ listTests =
       template : "TEList"
       test : (div)->
         # items without cells
-        chai.expect(div.find('.te-first-item').length).not.to.be.empty
-        chai.expect(div.find('.te-last-item').length).not.to.be.empty
-        chai.expect(div.find('#first-item-id').length).not.to.be.empty
-        chai.expect(div.find('#third-item-id').length).to.equal(0)
-        chai.expect(div.find('.te-title').length).to.equal(4)
-        chai.expect(div.find('.te-description').length).to.equal(3)
-        chai.expect(div.find('.test-class').length).to.equal(1)
-        chai.expect(div.find('.test-class2').length).to.equal(1)
-        chai.expect(div.find('.title-class-first').length).to.equal(1)
-        chai.expect(div.find('.description-class-first').length).to.equal(1)
-        chai.expect(div.find('.test-class').find('.te-content').attr('href')).to.equal('/home')
-        chai.expect(div.find('[item="0"]').hasClass('te-first-item')).to.be.true
+        expect(div.find('.te-first-item').length).toEqual(1)
+        expect(div.find('.te-last-item').length).toEqual(1)
+        expect(div.find('#first-item-id').length).toEqual(1)
+        expect(div.find('#third-item-id').length).toEqual(0)
+        expect(div.find('.te-title').length).toEqual(4)
+        expect(div.find('.te-description').length).toEqual(3)
+        expect(div.find('.test-class').length).toEqual(1)
+        expect(div.find('.test-class2').length).toEqual(1)
+        expect(div.find('.title-class-first').length).toEqual(1)
+        expect(div.find('.description-class-first').length).toEqual(1)
+        expect(div.find('.test-class').find('.te-content').attr('href')).toEqual('/home')
+        expect(div.find('[item="0"]').hasClass('te-first-item')).toBe(true)
 
         # check cells
-        chai.expect(div.find('.first-cell-class').find('.icon').length).to.equal(2)
-        chai.expect(div.find('.first-item-class').find('td').length).to.equal(2)
-        chai.expect(div.find('#first-icon').length).to.equal(1)
-        chai.expect(div.find('.first-icon-class').length).to.equal(1)
-        chai.expect(div.find('.te-first-cell').length).to.equal(3)
-        chai.expect(div.find('.te-last-cell').length).to.equal(3)
-        chai.expect(div.find('#second-icon').attr('href')).to.equal('second-icon-link')
-        chai.expect(div.find('.fa-first-icon').length).to.equal(1)
+        expect(div.find('.first-cell-class').find('.icon').length).toEqual(2)
+        expect(div.find('.first-item-class').find('td').length).toEqual(2)
+        expect(div.find('#first-icon').length).toEqual(1)
+        expect(div.find('.first-icon-class').length).toEqual(1)
+        expect(div.find('.te-first-cell').length).toEqual(3)
+        expect(div.find('.te-last-cell').length).toEqual(3)
+        expect(div.find('#second-icon').attr('href')).toEqual('second-icon-link')
+        expect(div.find('.fa-first-icon').length).toEqual(1)
     }
     {
       name : "Pagination : Helper, in range"
       data : data.paginationInRange
       template : "TEPagination"
       test : (div)->
-        chai.expect(div.find('.te-one-page').length).to.equal(6)
-        chai.expect(div.find('.te-page-previous').hasClass('te-page-3')).to.be.true
-        chai.expect(div.find('.te-page-next').hasClass('te-page-5')).to.be.true
-        chai.expect(div.find('.active').children('.te-page-4').length).to.equal(1)
-        chai.expect(div.find('.te-page-2').length).to.equal(1)
-        chai.expect(div.find('.te-page-3').length).to.equal(2)
-        chai.expect(div.find('.te-page-4').length).to.equal(1)
-        chai.expect(div.find('.te-page-5').length).to.equal(2)
-        chai.expect(div.find('.te-page-2').attr('href')).to.equal('/page/1')
-        chai.expect(div.find('.te-page-3').attr('href')).to.equal('/page/2')
-        chai.expect(div.find('.te-page-4').attr('href')).to.equal('/page/3')
-        chai.expect(div.find('.te-page-5').attr('href')).to.equal('/page/4')
+        expect(div.find('.te-one-page').length).toEqual(6)
+        expect(div.find('.te-page-previous').hasClass('te-page-3')).toBe(true)
+        expect(div.find('.te-page-next').hasClass('te-page-5')).toBe(true)
+        expect(div.find('.active').children('.te-page-4').length).toEqual(1)
+        expect(div.find('.te-page-2').length).toEqual(1)
+        expect(div.find('.te-page-3').length).toEqual(2)
+        expect(div.find('.te-page-4').length).toEqual(1)
+        expect(div.find('.te-page-5').length).toEqual(2)
+        expect(div.find('.te-page-2').attr('href')).toEqual('/page/1')
+        expect(div.find('.te-page-3').attr('href')).toEqual('/page/2')
+        expect(div.find('.te-page-4').attr('href')).toEqual('/page/3')
+        expect(div.find('.te-page-5').attr('href')).toEqual('/page/4')
     }
     {
       name : "Pagination : Helper, before range"
       data : data.paginationBeforeRange
       template : "TEPagination"
       test : (div)->
-        chai.expect(div.find('.te-one-page').length).to.equal(7)
-        chai.expect(div.find('.te-page-previous').hasClass('te-page-1')).to.be.true
-        chai.expect(div.find('.te-page-next').hasClass('te-page-3')).to.be.true
-        chai.expect(div.find('.active').children('.te-page-2').length).to.equal(1)
-        chai.expect(div.find('.te-page-1').length).to.equal(2)
-        chai.expect(div.find('.te-page-2').length).to.equal(1)
-        chai.expect(div.find('.te-page-3').length).to.equal(2)
-        chai.expect(div.find('.te-page-4').length).to.equal(1)
-        chai.expect(div.find('.te-page-5').length).to.equal(1)
+        expect(div.find('.te-one-page').length).toEqual(7)
+        expect(div.find('.te-page-previous').hasClass('te-page-1')).toBe(true)
+        expect(div.find('.te-page-next').hasClass('te-page-3')).toBe(true)
+        expect(div.find('.active').children('.te-page-2').length).toEqual(1)
+        expect(div.find('.te-page-1').length).toEqual(2)
+        expect(div.find('.te-page-2').length).toEqual(1)
+        expect(div.find('.te-page-3').length).toEqual(2)
+        expect(div.find('.te-page-4').length).toEqual(1)
+        expect(div.find('.te-page-5').length).toEqual(1)
 
     }
     {
@@ -161,15 +161,15 @@ listTests =
       data : data.paginationAfterRange
       template : "TEPagination"
       test : (div)->
-        chai.expect(div.find('.te-one-page').length).to.equal(6)
-        chai.expect(div.find('.te-page-previous').hasClass('te-page-9')).to.be.true
-        chai.expect(div.find('.te-page-next').hasClass('te-page-10')).to.be.true
-        chai.expect(div.find('.active').children('.te-page-10').length).to.equal(1)
-        chai.expect(div.find('.disabled').children('.te-page-next').length).to.equal(1)
-        chai.expect(div.find('.te-page-7').length).to.equal(1)
-        chai.expect(div.find('.te-page-8').length).to.equal(1)
-        chai.expect(div.find('.te-page-9').length).to.equal(2)
-        chai.expect(div.find('.te-page-10').length).to.equal(2)
+        expect(div.find('.te-one-page').length).toEqual(6)
+        expect(div.find('.te-page-previous').hasClass('te-page-9')).toBe(true)
+        expect(div.find('.te-page-next').hasClass('te-page-10')).toBe(true)
+        expect(div.find('.active').children('.te-page-10').length).toEqual(1)
+        expect(div.find('.disabled').children('.te-page-next').length).toEqual(1)
+        expect(div.find('.te-page-7').length).toEqual(1)
+        expect(div.find('.te-page-8').length).toEqual(1)
+        expect(div.find('.te-page-9').length).toEqual(2)
+        expect(div.find('.te-page-10').length).toEqual(2)
 
     }
     {
@@ -179,7 +179,7 @@ listTests =
       before : (div)->
         div.find('.te-page-next').trigger('click')
       test : (div)->
-        chai.expect(Session.get('page')).to.equal(4)
+        expect(Session.get('page')).toEqual(4)
     }
     {
       name : "List : Event, in item"
@@ -188,7 +188,7 @@ listTests =
       before : (div)->
         div.find('.title-class-first').trigger('click')
       test : (div)->
-        chai.expect(Session.get('eventTest')).to.equal("insideItem")
+        expect(Session.get('eventTest')).toMatch("insideItem")
         Session.set('eventTest', undefined)
     }
     {
@@ -198,7 +198,7 @@ listTests =
       before : (div)->
         div.find('.third-icon-class').trigger('click')
       test : (div)->
-        chai.expect(Session.get('eventTest')).to.equal("insideCell")
+        expect(Session.get('eventTest')).toMatch("insideCell")
         Session.set('eventTest', undefined)
     }
     {
@@ -208,7 +208,7 @@ listTests =
       before : (div)->
         div.find('.second-icon-class').trigger('click')
       test : (div)->
-        chai.expect(Session.get('eventTest')).to.equal("insideRow")
+        expect(Session.get('eventTest')).toMatch("insideRow")
         Session.set('eventTest', undefined)
     }
     {
@@ -218,7 +218,7 @@ listTests =
       before : (div)->
         div.find('.first-icon-class').trigger('click')
       test : (div)->
-        chai.expect(Session.get('eventTest')).to.equal("insideIcon")
+        expect(Session.get('eventTest')).toMatch("insideIcon")
         Session.set('eventTest', undefined)
     }
     {
@@ -228,7 +228,7 @@ listTests =
       before : (div)->
         div.find('.test-class').trigger('click')
       test : (div)->
-        chai.expect(Session.get('eventTest')).to.equal("insideData")
+        expect(Session.get('eventTest')).toMatch("insideData")
         Session.set('eventTest', undefined)
     }
   ]

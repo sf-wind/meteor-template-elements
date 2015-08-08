@@ -54,36 +54,36 @@ headerTests =
       data : undefined
       template : "TEHeader"
       test : (div)->
-        chai.expect(div.find('nav').length).to.equal(0)
+        expect(div.find('nav').length).toEqual(0)
     }
     {
       name : "Header : Helper, noBack"
       data : data.headerNoBack
       template : "TEHeader"
       test : (div)->
-        chai.expect(div.find('.te-title-back').length).to.equal(1)
+        expect(div.find('.te-title-back').length).toEqual(1)
         # no options
-        chai.expect(div.find('.navbar-toggle').length).to.equal(0)
-        chai.expect(div.find('.navbar-collapse').length).to.equal(0)
+        expect(div.find('.navbar-toggle').length).toEqual(0)
+        expect(div.find('.navbar-collapse').length).toEqual(0)
     }
     {
       name : "Header : Helper, complete"
       data : data.headerComplete
       template : "TEHeader"
       test : (div)->
-        chai.expect(div.find('#te-header-back').length).to.equal(1)
+        expect(div.find('#te-header-back').length).toEqual(1)
         # test Name
-        chai.expect(div.find('.name-class').attr('href')).to.equal('/name/href')
+        expect(div.find('.name-class').attr('href')).toEqual('/name/href')
         # test icon
-        chai.expect(div.find('.icon-class').hasClass('class-icon')).to.be.true
-        chai.expect(div.find('.icon-class').attr('href')).to.equal('/icon/href')
-        chai.expect(div.find('.icon-class').find('.fa-icon').length).to.equal(1)
+        expect(div.find('.icon-class').hasClass('class-icon')).toBe(true)
+        expect(div.find('.icon-class').attr('href')).toEqual('/icon/href')
+        expect(div.find('.icon-class').find('.fa-icon').length).toEqual(1)
         # test menu icon
-        chai.expect(div.find('.te-header-options').find('li.dropdown').find('.fa-icon').length).to.equal(1)
-        chai.expect(div.find('#id-icon').find('.fa-menu-icon').length).to.equal(1)
-        chai.expect(div.find('#menu-id-1').attr('href')).to.equal('menu/1/href')
+        expect(div.find('.te-header-options').find('li.dropdown').find('.fa-icon').length).toEqual(1)
+        expect(div.find('#id-icon').find('.fa-menu-icon').length).toEqual(1)
+        expect(div.find('#menu-id-1').attr('href')).toEqual('menu/1/href')
         # test menu Name
-        chai.expect(div.find('.te-one-header-option').find('.caret').parent().length).to.equal(1)
+        expect(div.find('.te-one-header-option').find('.caret').parent().length).toEqual(1)
 
     }
     {
@@ -93,7 +93,7 @@ headerTests =
       before : (div)->
         div.find('.name-class').trigger('click')
       test : (div) ->
-        chai.expect(Session.get('headerTest')).to.equal('nameOnly')
+        expect(Session.get('headerTest')).toEqual('nameOnly')
         Session.set('headerTest', undefined)
     }
     {
@@ -103,7 +103,7 @@ headerTests =
       before : (div)->
         div.find('.icon-class').trigger('click')
       test : (div) ->
-        chai.expect(Session.get('headerTest')).to.equal('iconOnly')
+        expect(Session.get('headerTest')).toEqual('iconOnly')
         Session.set('headerTest', undefined)
     }
     {
@@ -113,7 +113,7 @@ headerTests =
       before : (div)->
         div.find('#menu-id-1').trigger('click')
       test : (div) ->
-        chai.expect(Session.get('headerTest')).to.equal('dropdownMenuItem')
+        expect(Session.get('headerTest')).toEqual('dropdownMenuItem')
         Session.set('headerTest', undefined)
     }
   ]

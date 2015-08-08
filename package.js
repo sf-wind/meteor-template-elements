@@ -35,7 +35,7 @@ Package.onUse(function(api) {
   api.use("less", "client");
 
 //  api.imply('nemo64:bootstrap@3.3.5', 'client')
-  api.use('fortawesome:fontawesome@4.3.0', 'client')
+//  api.use('fortawesome:fontawesome@4.3.0', 'client')
   api.addFiles('exports.js');
   api.addFiles('client/list/list.html');
   api.addFiles('client/list/list.coffee');
@@ -50,7 +50,10 @@ Package.onUse(function(api) {
 });
 
 Package.onTest(function(api) {
-  api.use(["mike:mocha-package", "practicalmeteor:chai"]);
+  api.use("sanjo:jasmine@0.16.4")
+//  api.use("practicalmeteor:chai")
+//  api.use("velocity:html-reporter")
+//  api.use(["mike:mocha-package", "practicalmeteor:chai"]);
   api.use('coffeescript');
   api.use("templating", "client");
   api.use("blaze", "client");
@@ -60,7 +63,8 @@ Package.onTest(function(api) {
   api.addFiles('tests/_.coffee', 'client');
   api.addFiles('tests/client/list/list.coffee', 'client');
   api.addFiles('tests/client/header/header.coffee', 'client');
-  api.addFiles('tests/client/footer/footer.coffee', 'client');  
+  api.addFiles('tests/client/footer/footer.coffee', 'client');
   // should be the last file to add
   api.addFiles('tests/tests.coffee', 'client');
+
 });
