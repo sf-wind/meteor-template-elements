@@ -50,7 +50,7 @@ Package.onUse(function(api) {
 });
 
 Package.onTest(function(api) {
-  api.use("sanjo:jasmine@0.16.4")
+  api.use("sanjo:jasmine@0.17.0")
 //  api.use("practicalmeteor:chai")
 //  api.use("velocity:html-reporter")
 //  api.use(["mike:mocha-package", "practicalmeteor:chai"]);

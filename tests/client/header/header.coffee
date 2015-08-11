@@ -16,8 +16,9 @@ data =
           Session.set('headerTest', "iconOnly")
       }
       {
-        icon : "icon"
+        icon : "icon2"
         id : "id-icon"
+        class : "menu-icon-class"
         items : [
           {
             id : "menu-id-1"
@@ -36,6 +37,7 @@ data =
       }
       {
         name : "dropdown-name"
+        class : "menu-name-class"
         items : [
           {
             name : "menu-name"
@@ -45,6 +47,9 @@ data =
     ]
   headerNoBack :
     noBack : true
+  headerIsInline :
+    isInline : true
+    isFixedWidth : true
 
 headerTests =
   name : "Test header element"
@@ -57,33 +62,50 @@ headerTests =
         expect(div.find('nav').length).toEqual(0)
     }
     {
-      name : "Header : Helper, noBack"
+      name : "Header : Helper, noBack, fixed, no options"
       data : data.headerNoBack
       template : "TEHeader"
       test : (div)->
-        expect(div.find('.te-title-back').length).toEqual(1)
+        # no back
+        expect(div.find('.te-title-back i.fa-invisible').length).toEqual(1)
+        # fixed to top
+        expect(div.find('.navbar-fixed-top').length).toEqual(1)
         # no options
         expect(div.find('.navbar-toggle').length).toEqual(0)
         expect(div.find('.navbar-collapse').length).toEqual(0)
+    }
+    {
+      name : "Header : Helper, inline, fixed width"
+      data : data.headerIsInline
+      template : "TEHeader"
+      test : (div) ->
+        # no fixed
+        expect(div.find('.navbar-fixed-top').length).toEqual(0)
+        # fixed width
+        expect(div.find('nav.navbar > .container').length).toEqual(1)
     }
     {
       name : "Header : Helper, complete"
       data : data.headerComplete
       template : "TEHeader"
       test : (div)->
-        expect(div.find('#te-header-back').length).toEqual(1)
+        # test back
+        expect(div.find('.te-header-back i.fa-chevron-left').length).toEqual(1)
+        # fluid width
+        expect(div.find('nav.navbar > .container-fluid').length).toEqual(1)
         # test Name
         expect(div.find('.name-class').attr('href')).toEqual('/name/href')
         # test icon
         expect(div.find('.icon-class').hasClass('class-icon')).toBe(true)
         expect(div.find('.icon-class').attr('href')).toEqual('/icon/href')
-        expect(div.find('.icon-class').find('.fa-icon').length).toEqual(1)
+        expect(div.find('.icon-class .fa-icon').length).toEqual(1)
         # test menu icon
-        expect(div.find('.te-header-options').find('li.dropdown').find('.fa-icon').length).toEqual(1)
-        expect(div.find('#id-icon').find('.fa-menu-icon').length).toEqual(1)
+        expect(div.find('.te-header-options li.dropdown .fa-icon2').length).toEqual(1)
+        expect(div.find('.te-header-options li.dropdown .fa-icon2').parent().hasClass("menu-icon-class")).toBe(true)
+        expect(div.find('#id-icon .fa-menu-icon').length).toEqual(1)
         expect(div.find('#menu-id-1').attr('href')).toEqual('menu/1/href')
         # test menu Name
-        expect(div.find('.te-one-header-option').find('.caret').parent().length).toEqual(1)
+        expect(div.find('.te-one-header-option .caret').parent().hasClass('menu-name-class')).toBe(true)
 
     }
     {

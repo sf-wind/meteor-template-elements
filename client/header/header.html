@@ -1,7 +1,7 @@
 <template name="TEHeader">
   {{#if hasHeader}}
-  <nav class="navbar navbar-default navbar-fixed-top clearfix" role="navigation">
-    <div class="container-fluid">
+  <nav class="navbar navbar-default {{#if isFixed}}navbar-fixed-top{{/if}} clearfix" role="navigation">
+    <div class="{{#if isFixedWidth}}container{{else}}container-fluid{{/if}}">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         {{#if options}}
@@ -17,7 +17,7 @@
           {{#if noBack}}
             <a class="te-title-back"> <i class="fa fa-invisible"></i></a>
           {{else}}
-            <a id="te-header-back" class="te-title-back">
+            <a class="te-header-back te-title-back">
               <i class="fa fa-chevron-left"></i>
             </a>
           {{/if}}
@@ -25,10 +25,49 @@
         </div>
       </div>
       {{#if options}}
-      <div class="collapse navbar-collapse" id="navbar-collapsable">
+      <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right te-header-options">
           {{#each options}}
-          {{> TEHeaderOption this}}
+            {{#if items}}
+            <li class="te-one-header-option dropdown">
+              {{#if icon}}
+              <a class="dropdown-toggle {{class}}" data-toggle="dropdown" href="#">
+                <i class="fa fa-{{icon}}"></i>
+              </a>
+              {{else}}
+              {{#if name}}
+              <a class="dropdown-toggle {{class}}" data-toggle="dropdown" href="#">
+                {{name}} <span class="caret"></span>
+              </a>
+              {{/if}}
+              {{/if}}
+              <ul id="{{id}}" class="dropdown-menu dropdown-menu-right" role="menu"
+                  aria-labelledby="header-options">
+                {{#each items}}
+                <li role="presentation">
+                  <a role="menuitem" id="{{id}}" href="{{href}}" class="dropdown-menu-item">
+                    {{#if icon}}
+                    <i class="fa fa-{{icon}}"></i>
+                    {{/if}}
+                    {{name}}
+                  </a>
+                </li>
+                {{/each}}
+              </ul>
+            </li>
+            {{else}}
+            <li class="te-one-header-option">
+              {{#if name}}
+              <a class="te-header-link {{class}}" href="{{href}}">{{name}}</a>
+              {{else}}
+              {{#if icon}}
+              <a class="te-header-link class-{{icon}} {{class}}" href="{{href}}">
+                <i class="fa fa-{{icon}}"></i>
+              </a>
+              {{/if}}
+              {{/if}}
+            </li>
+            {{/if}}
           {{/each}}
         </ul>
       </div>
@@ -39,44 +78,5 @@
 </template>
 
 <template name="TEHeaderOption">
-  {{#if items}}
-  <li class="te-one-header-option dropdown">
-    {{#if icon}}
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-      <i class="fa fa-{{icon}}"></i>
-    </a>
-    {{else}}
-    {{#if name}}
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-      {{name}} <span class="caret"></span>
-    </a>
-    {{/if}}
-    {{/if}}
-    <ul id="{{id}}" class="dropdown-menu dropdown-menu-right" role="menu"
-        aria-labelledby="header-options">
-      {{#each items}}
-      <li role="presentation">
-        <a role="menuitem" id="{{id}}" href="{{href}}" class="dropdown-menu-item">
-          {{#if icon}}
-          <i class="fa fa-{{icon}}"></i>
-          {{/if}}
-          {{name}}
-        </a>
-      </li>
-      {{/each}}
-    </ul>
-  </li>
-  {{else}}
-  <li class="te-one-header-option">
-    {{#if name}}
-    <a class="te-header-link {{class}}" href="{{href}}">{{name}}</a>
-    {{else}}
-    {{#if icon}}
-    <a class="te-header-link class-{{icon}} {{class}}" href="{{href}}">
-      <i class="fa fa-{{icon}}"></i>
-    </a>
-    {{/if}}
-    {{/if}}
-  </li>
-  {{/if}}
+
 </template>
