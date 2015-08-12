@@ -1,49 +1,3 @@
-<Template name="TEListIcon">
-  <a id="{{id}}" class="icon btn btn-xs {{class}} class-{{icon}}" href="{{href}}">
-    <i class="fa fa-lg fa-{{icon}}"></i>
-  </a>
-</Template>
-
-<Template name="TEListContent">
-  <a href="{{href}}" class="te-content">
-    {{#if title}}
-    <div class="te-title {{title.class}}">{{title.name}}</div>
-    {{/if}}
-    {{#if description}}
-    <div class="te-description {{description.class}}">
-      {{description.name}}
-    </div>
-    {{/if}}
-  </a>
-</Template>
-
-<Template name="TEListIcons">
-  <div class="te-list-icons">
-    {{#each this}}
-      {{> TEListIcon this}}
-    {{/each}}
-  </div>
-</Template>
-
-<Template name="TEListCell">
-  <td id="{{id}}" class="te-table-cell {{class}}" colspan="{{colspan}}">
-    {{#if icons}}
-      {{> TEListIcons icons}}
-    {{/if}}
-    {{#if hasContent}}
-      {{> TEListContent this}}
-    {{/if}}
-  </td>
-</Template>
-
-<Template name="TEListOneItem">
-  <tr id="{{id}}" class="te-table-row {{class}}" item="{{item}}">
-    {{#each cells}}
-      {{> TEListCell this}}
-    {{/each}}
-  </tr>
-</Template>
-
 <Template name="TEOnePageItem">
   <li class="te-one-page {{class}}">
     <a href="{{href}}" class="{{aclass}}" aria-label="{{aria_label}}" index="{{index}}">
@@ -67,14 +21,41 @@
 
 <Template name="TEList">
   {{#if hasItems}}
-  <div id= "{{id}}" class="panel panel-default te-list">
-    <table class="table table-hover te-table">
-      <tbody>
-        {{#each items}}
-          {{> TEListOneItem this}}
-        {{/each}}
-      </tbody>
-    </table>
+  <div id= "{{id}}" class="panel panel-default te-list {{class}}">
+      <table class="table table-hover te-table">
+        <tbody>
+          {{#each items}}
+            <tr id="{{id}}" class="te-table-row {{class}}" item="{{item}}">
+              {{#each cells}}
+                <td id="{{id}}" class="te-table-cell {{class}}" colspan="{{colspan}}">
+                  {{#if hasContent}}
+                    <a href="{{href}}" class="te-content">
+                      {{#if title}}
+                      <div class="te-title {{title.class}}">{{title.name}}</div>
+                      {{/if}}
+                      {{#if description}}
+                      <div class="te-description {{description.class}}">
+                        {{description.name}}
+                      </div>
+                      {{/if}}
+                    </a>
+                  {{else}}
+                    {{#if icons}}
+                      <div class="te-list-icons">
+                        {{#each icons}}
+                          <a id="{{id}}" class="icon btn btn-xs {{class}} class-{{icon}}" href="{{href}}">
+                            <i class="fa fa-lg fa-{{icon}}"></i>
+                          </a>
+                        {{/each}}
+                      </div>
+                    {{/if}}
+                  {{/if}}
+                </td>
+              {{/each}}
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
   </div>
   {{#if pagination}}
     {{> TEPagination pagination}}

@@ -1,6 +1,18 @@
 /****************************************
     TEList
 *****************************************/
+.te-list tr:hover {
+  cursor : pointer;
+}
+
+.te-list a {
+  text-decoration: none;
+  color : #777;
+}
+.te-list a:hover {
+  text-decoration: none;
+}
+
 .te-title {
     font-size: 18px;
 }
@@ -8,11 +20,17 @@
     font-size : 12px;
 }
 
-.te-list .te-last-cell .icon {
+.te-list .icon {
+  float : left;
+}
+.te-list .te-content {
+  float : left;
+}
+.te-list .te-last-cell .te-list-icons {
     float: right;
 }
 
-.te-list table tr td {
+.te-list table.te-table tr.te-table-row td.te-table-cell {
     vertical-align: middle;
 }
 

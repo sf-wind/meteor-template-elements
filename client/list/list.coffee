@@ -49,7 +49,8 @@ if Meteor.isClient
           action = data.action
 
       if _.isFunction action
-        res = action(e, tmpl, $tr, $a)
+        template = tmpl.view.parentView.parentView?.templateInstance()
+        res = action(e, template, $tr, $a)
         if res is false
           return false
 
@@ -99,9 +100,13 @@ if Meteor.isClient
             item.cells = [cell]
             delete item.title
             delete item.description
-            delete item.titleClass
-            delete item.descriptionClass
             delete item.href
+            if item.icons
+              cell =
+                icons : item.icons
+              num_cells++
+              item.cells.push cell
+              delete item.icons              
           else
             item.cells = [{}]
             num_cells = 1
@@ -117,7 +122,7 @@ if Meteor.isClient
             if last_cell.colspan
               last_cell.colspan = last_cell.colspan + max_num_cells - num_cells
             else
-              last_cell.colspan = max_num_cells - num_cells
+              last_cell.colspan = max_num_cells - num_cells + 1
           if item.cells[0].class is undefined
             item.cells[0].class = "te-first-cell"
           else if item.cells[0].class.indexOf('te-first-cell') < 0
