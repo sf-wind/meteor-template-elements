@@ -37,6 +37,7 @@ Package.onUse(function(api) {
 //  api.imply('nemo64:bootstrap@3.3.5', 'client')
 //  api.use('fortawesome:fontawesome@4.3.0', 'client')
   api.addFiles('exports.js');
+  api.addFiles('client/util.coffee')
   api.addFiles('client/list/list.html');
   api.addFiles('client/list/list.coffee');
   api.addFiles('client/list/list.less');

@@ -49,7 +49,7 @@ if Meteor.isClient
           action = data.action
 
       if _.isFunction action
-        template = tmpl.view.parentView.parentView?.templateInstance()
+        template = UTIL.getParentTemplate(tmpl)
         res = action(e, template, $tr, $a)
         if res is false
           return false
@@ -106,7 +106,7 @@ if Meteor.isClient
                 icons : item.icons
               num_cells++
               item.cells.push cell
-              delete item.icons              
+              delete item.icons
           else
             item.cells = [{}]
             num_cells = 1

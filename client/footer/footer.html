@@ -1,22 +1,19 @@
-<template name="TEFooterItem">
-  <a class="col-xs-{{grid}} te-footer-item {{class}} {{active}}" href="{{href}}">
-    {{#if icon}}
-    <i class="te-footer-icon fa fa-{{icon}}"></i>
-    {{/if}}
-    {{#if label}}
-    <div class="te-footer-label">{{label}}</div>
-    {{/if}}
-  </a>
-</template>
-
-
 <Template name="TEFooter">
   {{#if hasFooter}}
-  <nav id="te-footer" class="navbar navbar-default navbar-fixed-bottom container-fluid" role="navigation">
-    <div class="row">
+  <nav id="{{id}}" class="te-footer navbar navbar-default {{#if isFixed}}navbar-fixed-bottom{{/if}} {{class}}" role="navigation">
+    <div class="{{#if isFixedWidth}}container{{else}}container-fluid{{/if}}">
+      <div class="row">
         {{#each items}}
-        {{> TEFooterItem this}}
+          <a id = "{{id}}" class="col-xs-{{grid}} te-footer-item {{class}} {{active}}" href="{{href}}">
+            {{#if icon}}
+            <i class="te-footer-icon fa fa-{{icon}}"></i>
+            {{/if}}
+            {{#if label}}
+            <div class="te-footer-label">{{label}}</div>
+            {{/if}}
+          </a>
         {{/each}}
+      </div>
     </div>
   </nav>
   {{/if}}

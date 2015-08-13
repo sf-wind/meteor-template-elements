@@ -1,5 +1,7 @@
 data =
   headerComplete :
+    id : 'header-id'
+    class : 'header-class'
     options : [
       {
         name : "Name only"
@@ -89,6 +91,10 @@ headerTests =
       data : data.headerComplete
       template : "TEHeader"
       test : (div)->
+        # test header id
+        expect(div.find('#header-id').length).toEqual(1)
+        # test header class
+        expect(div.find('.header-class').length).toEqual(1)
         # test back
         expect(div.find('.te-header-back i.fa-chevron-left').length).toEqual(1)
         # fluid width
