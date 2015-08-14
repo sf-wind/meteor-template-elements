@@ -78,25 +78,6 @@ data =
       }
     ]
 
-  paginationInRange :
-      total : 100
-      page_number : 3
-      items_per_page : 10
-      num_pager : 4
-      getHREF : (idx)->
-        return "/page/" + idx
-      action : (idx)->
-        Session.set("page", idx)
-  paginationBeforeRange :
-      total : 100
-      page_number : 1
-      items_per_page : 10
-      num_pager : 5
-  paginationAfterRange :
-      total : 100
-      page_number : 9
-      items_per_page : 10
-      num_pager : 6
 
 listTests =
   name : "Test list element"
@@ -160,65 +141,6 @@ listTests =
         expect(div.find('.fa-first-icon').length).toEqual(1)
           # check text
         expect(div.find('.first-cell-class .te-title').text()).toEqual('Title One')
-    }
-    {
-      name : "Pagination : Helper, in range"
-      data : data.paginationInRange
-      template : "TEPagination"
-      test : (div)->
-        expect(div.find('.te-one-page').length).toEqual(6)
-        expect(div.find('.te-page-previous').hasClass('te-page-3')).toBe(true)
-        expect(div.find('.te-page-next').hasClass('te-page-5')).toBe(true)
-        expect(div.find('.active').children('.te-page-4').length).toEqual(1)
-        expect(div.find('.te-page-2').length).toEqual(1)
-        expect(div.find('.te-page-3').length).toEqual(2)
-        expect(div.find('.te-page-4').length).toEqual(1)
-        expect(div.find('.te-page-5').length).toEqual(2)
-        expect(div.find('.te-page-2').attr('href')).toEqual('/page/1')
-        expect(div.find('.te-page-3').attr('href')).toEqual('/page/2')
-        expect(div.find('.te-page-4').attr('href')).toEqual('/page/3')
-        expect(div.find('.te-page-5').attr('href')).toEqual('/page/4')
-    }
-    {
-      name : "Pagination : Helper, before range"
-      data : data.paginationBeforeRange
-      template : "TEPagination"
-      test : (div)->
-        expect(div.find('.te-one-page').length).toEqual(7)
-        expect(div.find('.te-page-previous').hasClass('te-page-1')).toBe(true)
-        expect(div.find('.te-page-next').hasClass('te-page-3')).toBe(true)
-        expect(div.find('.active').children('.te-page-2').length).toEqual(1)
-        expect(div.find('.te-page-1').length).toEqual(2)
-        expect(div.find('.te-page-2').length).toEqual(1)
-        expect(div.find('.te-page-3').length).toEqual(2)
-        expect(div.find('.te-page-4').length).toEqual(1)
-        expect(div.find('.te-page-5').length).toEqual(1)
-
-    }
-    {
-      name : "Pagination : Helper, after range"
-      data : data.paginationAfterRange
-      template : "TEPagination"
-      test : (div)->
-        expect(div.find('.te-one-page').length).toEqual(6)
-        expect(div.find('.te-page-previous').hasClass('te-page-9')).toBe(true)
-        expect(div.find('.te-page-next').hasClass('te-page-10')).toBe(true)
-        expect(div.find('.active').children('.te-page-10').length).toEqual(1)
-        expect(div.find('.disabled').children('.te-page-next').length).toEqual(1)
-        expect(div.find('.te-page-7').length).toEqual(1)
-        expect(div.find('.te-page-8').length).toEqual(1)
-        expect(div.find('.te-page-9').length).toEqual(2)
-        expect(div.find('.te-page-10').length).toEqual(2)
-
-    }
-    {
-      name : "Pagination : Event, in range"
-      data : data.paginationInRange
-      template : "TEPagination"
-      before : (div)->
-        div.find('.te-page-next').trigger('click')
-      test : (div)->
-        expect(Session.get('page')).toEqual(4)
     }
     {
       name : "List : Event, in item"

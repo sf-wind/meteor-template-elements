@@ -47,6 +47,9 @@ Package.onUse(function(api) {
   api.addFiles('client/footer/footer.html');
   api.addFiles('client/footer/footer.coffee');
   api.addFiles('client/footer/footer.less');
+  api.addFiles('client/pagination/pagination.html');
+  api.addFiles('client/pagination/pagination.coffee');
+  api.addFiles('client/pagination/pagination.less');
   api.export("BElements");
 });
 
@@ -65,6 +68,7 @@ Package.onTest(function(api) {
   api.addFiles('tests/client/list/list.coffee', 'client');
   api.addFiles('tests/client/header/header.coffee', 'client');
   api.addFiles('tests/client/footer/footer.coffee', 'client');
+  api.addFiles('tests/client/pagination/pagination.coffee', 'client');
   // should be the last file to add
   api.addFiles('tests/tests.coffee', 'client');
 
