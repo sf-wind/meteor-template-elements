@@ -1,8 +1,8 @@
 <template name="TECodeRemote">
-  <pre id="{{id}}" class="{{lang}}">
+  <pre id="{{id}}" class="{{class}} {{lang}}">
   </pre>
 </template>
 
 <template name="TECodeLocal">
-  <pre id="{{id}}" class="{{lang}}">{{> Template.contentBlock}}</pre>
+  <pre id="{{id}}" class="{{class}} {{lang}}">{{{content}}}</pre>
 </template>

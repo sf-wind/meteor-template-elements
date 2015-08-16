@@ -1,8 +1,8 @@
 Package.describe({
   name: 'fsun:template-elements',
-  version: '0.0.1',
+  version: '0.1.0',
   // Brief, one-line summary of the package.
-  summary: '',
+  summary: 'Common template elements to simplify view design. ',
   // URL to the Git repository containing the source code for this package.
   git: '',
   // By default, Meteor will default to using README.md for documentation.
@@ -10,23 +10,8 @@ Package.describe({
   documentation: 'README.md'
 });
 
-var pluginOptions = {
-  name : 'be-configurator',
-  use : [
-    'underscore',
-  ],
-  sources : [
-    'module-definitions.js',
-    'distributed-configuration.js',
-    'te-configurator.js'
-  ],
-  npmDependencies : {}
-};
-
-Package.registerBuildPlugin(pluginOptions);
-
 Package.onUse(function(api) {
-  api.versionsFrom('1.1.0.2');
+  api.versionsFrom('1.1.0.3');
   api.use('coffeescript');
   api.use("templating", "client");
   api.use("blaze", "client");
@@ -34,9 +19,7 @@ Package.onUse(function(api) {
   api.use("underscore", "client");
   api.use("less", "client");
 
-//  api.imply('nemo64:bootstrap@3.3.5', 'client')
-//  api.use('fortawesome:fontawesome@4.3.0', 'client')
-  api.addFiles('exports.js');
+  //api.addFiles('exports.js');
   api.addFiles('client/util.coffee')
   api.addFiles('client/list/list.html');
   api.addFiles('client/list/list.coffee');
@@ -50,25 +33,29 @@ Package.onUse(function(api) {
   api.addFiles('client/pagination/pagination.html');
   api.addFiles('client/pagination/pagination.coffee');
   api.addFiles('client/pagination/pagination.less');
-  api.export("BElements");
+  api.addFiles('client/code/code.html');
+  api.addFiles('client/code/code.coffee');
+  api.addFiles('client/code/code.less');
+  //api.export("BElements");
 });
 
 Package.onTest(function(api) {
   api.use("sanjo:jasmine@0.17.0")
-//  api.use("practicalmeteor:chai")
-//  api.use("velocity:html-reporter")
-//  api.use(["mike:mocha-package", "practicalmeteor:chai"]);
+  //api.use("simple:highlight.js")
+
   api.use('coffeescript');
   api.use("templating", "client");
   api.use("blaze", "client");
   api.use("jquery", "client");
   api.use("fsun:template-elements")
 
+  api.addFiles('tests/client/code/footer-example.txt', 'server', {isAsset : true})
   api.addFiles('tests/_.coffee', 'client');
   api.addFiles('tests/client/list/list.coffee', 'client');
   api.addFiles('tests/client/header/header.coffee', 'client');
   api.addFiles('tests/client/footer/footer.coffee', 'client');
   api.addFiles('tests/client/pagination/pagination.coffee', 'client');
+  api.addFiles('tests/client/code/code.coffee', 'client')
   // should be the last file to add
   api.addFiles('tests/tests.coffee', 'client');
 

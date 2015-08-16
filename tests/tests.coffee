@@ -9,9 +9,11 @@ for i in [0...tests.length]
           expect(test.template).toBeDefined()
           expect(test.test).toBeDefined()
           div = document.createElement("div")
+          #$('body').append(div)
           Blaze.renderWithData(Template[test.template], test.data, div)
 #          console.log div
           if test.before
             test.before($(div))
+          Tracker.flush()
           test.test($(div))
           $(div).remove()
