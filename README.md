@@ -24,3 +24,6 @@ Currently the following elements are supported:
 * Footer
 * Pagination
 * Code
+
+# License
+This package is provided under MIT license. 
