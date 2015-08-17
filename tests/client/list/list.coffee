@@ -61,6 +61,24 @@ data =
         ]
       }
       {
+        id : 'third-item'
+        cells : [
+          {
+            id : "item3-cell1"
+            title : "first-cell"
+            href : '/item3-cell1'
+          }
+          {
+            icons : [
+              {
+                id : "item3-cell3-icon1"
+                icon : "one-icon"
+              }
+            ]
+          }
+        ]
+      }
+      {
         class : "test-class test-class2"
         title : "Last Item"
         href : "/home"
@@ -99,9 +117,9 @@ listTests =
         # has last item class
         expect(div.find('.te-last-item').length).toEqual(1)
         # last item class is in the last item
-        expect(div.find('[item="2"]').hasClass('te-last-item')).toBe(true)
+        expect(div.find('[item="3"]').hasClass('te-last-item')).toBe(true)
         # four items have title
-        expect(div.find('.te-title').length).toEqual(4)
+        expect(div.find('.te-title').length).toEqual(5)
         # three items have description
         expect(div.find('.te-description').length).toEqual(3)
 
@@ -122,6 +140,11 @@ listTests =
         expect(div.find('#last-icon-id').length).toEqual(1)
         expect(div.find('.test-class .last-icon-class').attr('href')).toEqual('last-icon-href')
 
+          # last item first cell span 2
+        expect(div.find('#last-item-id .te-first-cell').attr('colspan')).toEqual("2")
+          # last item last cell has the same href
+        expect(div.find('#last-item-id .te-last-cell > .te-list-icons').attr('href')).toEqual('/home')
+
         # check cells
           # icon in a cell is not displayed
         expect(div.find('.first-cell-class').find('.icon').length).toEqual(0)
@@ -132,15 +155,21 @@ listTests =
           # class in icon exists
         expect(div.find('.first-icon-class').length).toEqual(1)
           # three first cells
-        expect(div.find('.te-first-cell').length).toEqual(3)
+        expect(div.find('.te-first-cell').length).toEqual(4)
           #three last cells
-        expect(div.find('.te-last-cell').length).toEqual(3)
+        expect(div.find('.te-last-cell').length).toEqual(4)
           # icon href match
         expect(div.find('#second-icon').attr('href')).toEqual('second-icon-link')
           #icon exists
         expect(div.find('.fa-first-icon').length).toEqual(1)
           # check text
         expect(div.find('.first-cell-class .te-title').text()).toEqual('Title One')
+
+          # third item first cell span 2
+        expect(div.find('#item3-cell1').attr('colspan')).toEqual("2")
+        expect(div.find('#item3-cell1 > a').attr('href')).toEqual('/item3-cell1')
+          # third item last cell also has the same href as the first Item
+        expect(div.find('#third-item .te-last-cell > a').attr('href')).toEqual('/item3-cell1')
     }
     {
       name : "List : Event, in item"

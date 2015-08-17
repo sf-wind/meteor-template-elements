@@ -102,10 +102,13 @@ if Meteor.isClient
             delete item.description
             delete item.href
             if item.icons
-              cell =
+              cell2 =
                 icons : item.icons
+              # also get the same href
+              if cell.href
+                cell2.href = cell.href
               num_cells++
-              item.cells.push cell
+              item.cells.push cell2
               delete item.icons
           else
             item.cells = [{}]
@@ -116,18 +119,34 @@ if Meteor.isClient
         for i in [0...items.length]
           item = items[i]
           num_cells = row_num_cells[i]
-
-          last_cell = item.cells[item.cells.length-1]
           if num_cells < max_num_cells
-            if last_cell.colspan
-              last_cell.colspan = last_cell.colspan + max_num_cells - num_cells
+            expand_cell = undefined
+            for j in [item.cells.length-1..0] by -1
+              if item.cells[j].hasContent
+                expand_cell = item.cells[j]
+                break
+            if not expand_cell
+              expand_cell = item.cells[item.cells.length-1]
+            if expand_cell.colspan
+              expand_cell.colspan = expand_cell.colspan + max_num_cells - num_cells
             else
-              last_cell.colspan = max_num_cells - num_cells + 1
+              expand_cell.colspan = max_num_cells - num_cells + 1
+          # if a cell only has icons and no href, get
+          # the href from its left cell
+          last_cell_href = undefined
+          for j in [0...item.cells.length]
+            cell = item.cells[j]
+            if cell.hasContent
+              last_cell_href = cell.href
+            else if not cell.href
+              cell.href = last_cell_href
+
           if item.cells[0].class is undefined
             item.cells[0].class = "te-first-cell"
           else if item.cells[0].class.indexOf('te-first-cell') < 0
             item.cells[0].class = item.cells[0].class + " te-first-cell"
 
+          last_cell = item.cells[item.cells.length-1]
           if last_cell.class is undefined
             last_cell.class = "te-last-cell"
           else if last_cell.class.indexOf('te-last-cell') < 0

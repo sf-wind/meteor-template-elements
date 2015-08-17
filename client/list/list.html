@@ -21,13 +21,13 @@
                     </a>
                   {{else}}
                     {{#if icons}}
-                      <div class="te-list-icons">
+                      <a class="te-list-icons" href="{{href}}">
                         {{#each icons}}
                           <a id="{{id}}" class="icon btn btn-xs {{class}} class-{{icon}}" href="{{href}}">
                             <i class="fa fa-lg fa-{{icon}}"></i>
                           </a>
                         {{/each}}
-                      </div>
+                      </a>
                     {{/if}}
                   {{/if}}
                 </td>
