@@ -143,7 +143,7 @@ listTests =
           # last item first cell span 2
         expect(div.find('#last-item-id .te-first-cell').attr('colspan')).toEqual("2")
           # last item last cell has the same href
-        expect(div.find('#last-item-id .te-last-cell > .te-list-icons').attr('href')).toEqual('/home')
+        expect(div.find('#last-item-id .te-last-cell > a').attr('href')).toEqual('/home')
 
         # check cells
           # icon in a cell is not displayed
