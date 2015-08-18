@@ -1,5 +1,7 @@
 sudo: required
 language: node_js
+env:
+  - VELOCITY_TEST_PACKAGES=1
 node_js:
   - "0.10"
 before_install:
