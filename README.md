@@ -1,4 +1,6 @@
 # fsun:template-elements
+[![Build Status](https://travis-ci.org/sf-wind/meteor-template-elements.svg?branch=master)](https://travis-ci.org/sf-wind/meteor-template-elements)
+
 A Meteor package providing commonly used template elements to simplify Meteor
 application development. Users can compose javascript objects to control
 the display and callback actions of the elements.
