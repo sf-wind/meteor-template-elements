@@ -169,7 +169,7 @@ listTests =
         expect(div.find('#item3-cell1').attr('colspan')).toEqual("2")
         expect(div.find('#item3-cell1 > a').attr('href')).toEqual('/item3-cell1')
           # third item last cell also has the same href as the first Item
-        expect(div.find('#third-item .te-last-cell > a').attr('href')).toEqual('/item3-cell1-')
+        expect(div.find('#third-item .te-last-cell > a').attr('href')).toEqual('/item3-cell1')
     }
     {
       name : "List : Event, in item"
