@@ -18,6 +18,7 @@ meteor add fsun:template-elements
 # Documentation
 
 A demo of this package can be found at http://template-elements.meteor.com/
+The package can be found at https://atmospherejs.com/fsun/template-elements
 
 # Template elements
 Currently the following elements are supported:
