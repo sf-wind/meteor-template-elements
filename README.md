@@ -1,7 +1,7 @@
 # fsun:template-elements
 A Meteor package providing commonly used template elements to simplify Meteor
 application development. Users can compose javascript objects to control
-the display and action callbacks of the elements.
+the display and callback actions of the elements.
 
 The package works with bootstrap and fontawesome, but it does not include
 those packages. Users can include those packages together with this package
@@ -26,4 +26,4 @@ Currently the following elements are supported:
 * Code
 
 # License
-This package is provided under MIT license. 
+This package is provided under MIT license.
