@@ -18,30 +18,39 @@ Package.onUse(function(api) {
   api.use("jquery", "client");
   api.use("underscore", "client");
   api.use("less", "client");
+  api.use("reactive-var", "client")
+  api.use("momentjs:moment@2.10.6", "client")
 
-  //api.addFiles('exports.js');
-  api.addFiles('client/util.coffee')
+  api.addFiles('exports.coffee');
+  api.export("BElements");
+
   api.addFiles('client/list/list.html');
   api.addFiles('client/list/list.coffee');
   api.addFiles('client/list/list.less');
+
   api.addFiles('client/header/header.html');
   api.addFiles('client/header/header.coffee');
   api.addFiles('client/header/header.less');
+
   api.addFiles('client/footer/footer.html');
   api.addFiles('client/footer/footer.coffee');
   api.addFiles('client/footer/footer.less');
+
   api.addFiles('client/pagination/pagination.html');
   api.addFiles('client/pagination/pagination.coffee');
   api.addFiles('client/pagination/pagination.less');
+
   api.addFiles('client/code/code.html');
   api.addFiles('client/code/code.coffee');
   api.addFiles('client/code/code.less');
-  //api.export("BElements");
+
+  api.addFiles('client/calendar/calendar.html');
+  api.addFiles('client/calendar/calendar.coffee');
+  api.addFiles('client/calendar/calendar.less');
 });
 
 Package.onTest(function(api) {
   api.use("sanjo:jasmine@0.17.0")
-  //api.use("simple:highlight.js")
 
   api.use('coffeescript');
   api.use("templating", "client");

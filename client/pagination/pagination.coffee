@@ -53,7 +53,7 @@ if Meteor.isClient
         $li = $a.parent()
         if ($li.hasClass('disabled'))
           return
-        template = UTIL.getParentTemplate(tmpl)
+        template = BElements.getParentTemplate(tmpl)
         res = @action(e, template, idx)
         if res is false
           return false

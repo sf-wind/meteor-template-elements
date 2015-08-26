@@ -2,7 +2,7 @@ if Meteor.isClient
   Template.TEFooter.events
     'click a.te-footer-item' : (e, tmpl)->
       if @action
-        template = UTIL.getParentTemplate(tmpl)
+        template = BElements.getParentTemplate(tmpl)
         res = @action(e, template)
         if res is false
           return false

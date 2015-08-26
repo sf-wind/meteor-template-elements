@@ -49,7 +49,7 @@ if Meteor.isClient
           action = data.action
 
       if _.isFunction action
-        template = UTIL.getParentTemplate(tmpl)
+        template = BElements.getParentTemplate(tmpl)
         res = action(e, template, $tr, $a)
         if res is false
           return false

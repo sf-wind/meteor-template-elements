@@ -22,7 +22,7 @@ if Meteor.isClient
           $(div).collapse('hide')
       if @action
         # get calling template
-        template = UTIL.getParentTemplate(tmpl)
+        template = BElements.getParentTemplate(tmpl)
         res = @action(e, template)
         if res is false
           return false
@@ -34,7 +34,7 @@ if Meteor.isClient
         if div
           $(div).collapse('hide')
       if @action
-        template = UTIL.getParentTemplate(tmpl)
+        template = BElements.getParentTemplate(tmpl)
         res = @action(e, template)
         if res is false
           if typeof $.fn.dropdown is "function"
