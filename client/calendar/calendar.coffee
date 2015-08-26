@@ -19,7 +19,7 @@ buildCalendar = (month) ->
     startDay -= 7
   if dayOfWeek == localeFirstDay
     startDay = daysInLastMonth - 6
-  curDate = moment(lastMonth).day(startDay)
+  curDate = moment(lastMonth).date(startDay)
 
   i = 0
   col = 0
