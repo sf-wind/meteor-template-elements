@@ -56,7 +56,12 @@ if Meteor.isClient
     instance.month = new ReactiveVar(month)
 
   Template.TECalendar.helpers
-    'weelLabels' : ->
+    'hasWeekLabels' : ->
+      if @noWeekLabels
+        return false
+      else
+        return true
+    'weekLabels' : ->
       weekLabels = []
       week = moment().startOf('week')
       i = 0

@@ -10,11 +10,13 @@
           {{/with}}
           <th class="te-next"><i class="fa fa-icon fa-chevron-right"></i></th>
         </tr>
+        {{#if hasWeekLabels}}
         <tr>
           {{#each weekLabels}}
             <th><b>{{this}}</b></th>
           {{/each}}
         </tr>
+        {{/if}}
       </thead>
       <tbody>
         {{#each calendar}}
