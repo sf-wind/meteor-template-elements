@@ -5,15 +5,15 @@
         <tr>
           <th class="te-prev"><i class="fa fa-icon fa-chevron-left"></i></th>
           {{#with cal}}
-          <th colspan="3"><b>{{month}}</b></th>
-          <th colspan="2"><b>{{year}}</b></th>
+          <th colspan="3">{{month}}</th>
+          <th colspan="2">{{year}}</th>
           {{/with}}
           <th class="te-next"><i class="fa fa-icon fa-chevron-right"></i></th>
         </tr>
         {{#if hasWeekLabels}}
         <tr>
           {{#each weekLabels}}
-            <th><b>{{this}}</b></th>
+            <th>{{this}}</th>
           {{/each}}
         </tr>
         {{/if}}
