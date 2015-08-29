@@ -13,6 +13,10 @@
   text-decoration: none;
 }
 
+div.te-list table.te-table tr.te-table-row td.te-table-cell {
+  padding : 0;
+}
+
 .te-title {
     font-size: 18px;
 }
@@ -20,18 +24,21 @@
     font-size : 12px;
 }
 
-.te-list .icon {
-  float : left;
-}
-.te-list .te-content {
+.te-list .te-list-icons {
   float : left;
 }
 .te-list .te-last-cell .te-list-icons {
     float: right;
 }
 
-.te-list .te-table-cell a.te-content {
+.te-list td.te-table-cell > a {
   width : 100%;
+  padding: 8px;
+  display: block;
+
+  .te-title {
+    display : inline;
+  }
 }
 
 .te-list table.te-table tr.te-table-row td.te-table-cell {

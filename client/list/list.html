@@ -12,6 +12,9 @@
                     <a href="{{href}}" class="te-content">
                       {{#if title}}
                       <div class="te-title {{title.class}}">{{title.name}}</div>
+                        {{#if badge}}
+                          <span class="badge {{badge.class}}">{{badge.name}}</span>
+                        {{/if}}
                       {{/if}}
                       {{#if description}}
                       <div class="te-description {{description.class}}">

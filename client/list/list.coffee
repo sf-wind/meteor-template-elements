@@ -90,10 +90,12 @@ if Meteor.isClient
                 cell.hasContent = true
                 cell.title = formatName cell.title
                 cell.description = formatName cell.description
+                cell.badge = formatName cell.badge
           else if item.title or item.description
             cell =
               title : formatName item.title
               description : formatName item.description
+              badge : formatName item.badge
               href : item.href
               hasContent : true
             num_cells = 1

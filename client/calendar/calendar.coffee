@@ -28,7 +28,7 @@ buildCalendar = (month) ->
     if i > 0 and col % 7 == 0
       col = 0
       row++
-    cls = undefined
+    cls = ""
     if curDate.month() isnt startOfMonth.month()
       cls = 'te-off'
     if today.isSame(curDate, 'day')
@@ -76,6 +76,9 @@ if Meteor.isClient
       if not month.isValid()
         return
       calendar = buildCalendar(month)
+      if @postProcess
+        @postProcess calendar
+      calendar
     'cal' : ->
       instance = Template.instance()
       month = instance.month.get()
