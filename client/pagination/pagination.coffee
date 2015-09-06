@@ -19,7 +19,7 @@ if Meteor.isClient
         class : if page_number is 1 then "disabled" else undefined
         href : if getHREF then getHREF(prev_idx) else undefined
         index : prev_idx
-      from = Math.min(Math.max(1, page_number-Math.floor((num_pager)/2)), num_pages-num_pager + 1)
+      from = Math.max(1, Math.min(page_number-Math.floor((num_pager)/2), num_pages-num_pager + 1))
       to = Math.min(from + num_pager-1, num_pages)
       for i in [from..to]
         pages.push

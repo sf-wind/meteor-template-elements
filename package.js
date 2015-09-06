@@ -43,10 +43,11 @@ Package.onUse(function(api) {
   api.addFiles('client/code/code.html');
   api.addFiles('client/code/code.coffee');
   api.addFiles('client/code/code.less');
-
+/*
   api.addFiles('client/calendar/calendar.html');
   api.addFiles('client/calendar/calendar.coffee');
   api.addFiles('client/calendar/calendar.less');
+*/
 });
 
 Package.onTest(function(api) {

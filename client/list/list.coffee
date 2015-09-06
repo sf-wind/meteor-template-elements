@@ -50,7 +50,7 @@ if Meteor.isClient
 
       if _.isFunction action
         template = BElements.getParentTemplate(tmpl)
-        res = action(e, template, $tr, $a)
+        res = action(e, template, $tr, $target.closest('a'))
         if res is false
           return false
 
