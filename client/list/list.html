@@ -25,15 +25,12 @@
                   {{else}}
                     {{#if icons}}
                       <a href="{{href}}">
-                        <div style="width: 100%;">
-                          &nbsp;
-                          <div class="te-list-icons">
-                            {{#each icons}}
-                              <a id="{{id}}" class="icon btn btn-xs {{class}} class-{{icon}}" href="{{href}}">
-                                <i class="fa fa-lg fa-{{icon}}"></i>
-                              </a>
-                            {{/each}}
-                          </div>
+                        <div class="te-list-icons">
+                          {{#each icons}}
+                            <a id="{{id}}" class="icon btn btn-xs {{class}} class-{{icon}}" href="{{href}}">
+                              <i class="fa fa-lg fa-{{icon}}"></i>
+                            </a>
+                          {{/each}}
                         </div>
                     </a>
                     {{/if}}
