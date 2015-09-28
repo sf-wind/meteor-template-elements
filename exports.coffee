@@ -1,7 +1,7 @@
 BElements = {}
 
 BElements.getParentTemplate = (tmpl, parentName) ->
-  view = tmpl.view?.parentView
+  view = tmpl.view
   while (view isnt null) and
     (view isnt undefined) and
     ((view.templateInstance is undefined) or
