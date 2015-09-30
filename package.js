@@ -1,6 +1,6 @@
 Package.describe({
   name: 'fsun:template-elements',
-  version: '0.1.6',
+  version: '0.1.7',
   // Brief, one-line summary of the package.
   summary: 'Common template elements to simplify view design. ',
   // URL to the Git repository containing the source code for this package.
@@ -51,12 +51,14 @@ Package.onUse(function(api) {
 });
 
 Package.onTest(function(api) {
-  api.use("sanjo:jasmine@0.18.0")
+  api.use("sanjo:jasmine@0.20.0")
 
   api.use('coffeescript');
   api.use("templating", "client");
   api.use("blaze", "client");
   api.use("jquery", "client");
+  api.use("session", "client")
+  api.use("tracker", "client")
   api.use("fsun:template-elements")
 
   api.addAssets('tests/client/code/footer-example.txt', 'server')
