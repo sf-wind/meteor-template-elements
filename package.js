@@ -1,6 +1,6 @@
 Package.describe({
   name: 'fsun:template-elements',
-  version: '0.1.7',
+  version: '0.1.8',
   // Brief, one-line summary of the package.
   summary: 'Common template elements to simplify view design. ',
   // URL to the Git repository containing the source code for this package.
@@ -51,23 +51,23 @@ Package.onUse(function(api) {
 });
 
 Package.onTest(function(api) {
-  api.use("sanjo:jasmine@0.20.0")
+  api.use("sanjo:jasmine@0.20.0");
 
   api.use('coffeescript');
   api.use("templating", "client");
   api.use("blaze", "client");
   api.use("jquery", "client");
-  api.use("session", "client")
-  api.use("tracker", "client")
+  api.use("session", "client");
+  api.use("tracker", "client");
   api.use("fsun:template-elements")
 
-  api.addAssets('tests/client/code/footer-example.txt', 'server')
+  api.addAssets('tests/client/code/footer-example.txt', 'server');
   api.addFiles('tests/_.coffee', 'client');
   api.addFiles('tests/client/list/list.coffee', 'client');
   api.addFiles('tests/client/header/header.coffee', 'client');
   api.addFiles('tests/client/footer/footer.coffee', 'client');
   api.addFiles('tests/client/pagination/pagination.coffee', 'client');
-  api.addFiles('tests/client/code/code.coffee', 'client')
+  api.addFiles('tests/client/code/code.coffee', 'client');
   // should be the last file to add
   api.addFiles('tests/tests.coffee', 'client');
 
